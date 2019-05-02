@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SmartGallery.Web.Controllers
@@ -36,7 +35,7 @@ namespace SmartGallery.Web.Controllers
             {
                 get
                 {
-                    return 32 + (int)(TemperatureC / 0.5556);
+                    return 32 + (int)(this.TemperatureC / 0.5556);
                 }
             }
         }

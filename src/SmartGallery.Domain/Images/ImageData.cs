@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace SmartGallery.Domain.Images
 {
@@ -7,17 +6,22 @@ namespace SmartGallery.Domain.Images
     {
         private readonly List<Tag> _tags = new List<Tag>();
 
-        public int Id { get; set; }
-        public byte[] ImageBytes { get; set; }
+        public int ImageDataId { get; set; }
+
         public string FileName { get; set; }
+
+        public string FilePath => this.Category != null ? $"{this.Category.Name}\\{this.FileName}" : this.FileName;
+
+        public byte[] ImageBytes { get; set; }
+
         public string Description { get; set; }
         public ImageCategory Category { get; set; }
 
-        public IReadOnlyCollection<Tag> Tags => _tags.AsReadOnly();
+        public IReadOnlyCollection<Tag> Tags => this._tags.AsReadOnly();
 
         public void AddTag(string name)
         {
-            _tags.Add(new Tag
+            this._tags.Add(new Tag
             {
                 Name = name
             });

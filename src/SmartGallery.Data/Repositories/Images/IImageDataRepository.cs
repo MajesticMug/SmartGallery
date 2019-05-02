@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using SmartGallery.Domain.Images;
 
-namespace SmartGallery.Services.Images
+namespace SmartGallery.Data.Repositories.Images
 {
-    public interface IImageService
+    public interface IImageDataRepository
     {
         // Get
         Task<IList<ImageData>> GetAllImagesAsync(int pageNumber, int pageSize);
@@ -12,6 +12,6 @@ namespace SmartGallery.Services.Images
         Task<ImageData> GetImageDataAsync(int imageDataId);
 
         // Save
-        Task SaveImageAsync(string fileName, byte[] imageBytes, string categoryName = null, string description = null);
+        Task SaveImageDataAsync(ImageData imageData);
     }
 }
