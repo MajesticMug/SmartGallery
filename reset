@@ -1,0 +1,230 @@
+[1mdiff --git a/SmartGallery.Data/Repositories/Categories/ICategoryRepository.cs b/SmartGallery.Data/Repositories/Categories/ICategoryRepository.cs[m
+[1mdeleted file mode 100644[m
+[1mindex b43e71d..0000000[m
+[1m--- a/SmartGallery.Data/Repositories/Categories/ICategoryRepository.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-﻿namespace SmartGallery.Data.Repositories.Categories[m
+[31m-{[m
+[31m-    public interface ICategoryRepository[m
+[31m-    {[m
+[31m-        [m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/SmartGallery.Data/Repositories/Images/IImageRepository.cs b/SmartGallery.Data/Repositories/Images/IImageRepository.cs[m
+[1mdeleted file mode 100644[m
+[1mindex dcd31ce..0000000[m
+[1m--- a/SmartGallery.Data/Repositories/Images/IImageRepository.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-﻿namespace SmartGallery.Data.Repositories.Images[m
+[31m-{[m
+[31m-    public interface IImageRepository[m
+[31m-    {[m
+[31m-        [m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/SmartGallery.Data/Repositories/Tags/ITagRepository.cs b/SmartGallery.Data/Repositories/Tags/ITagRepository.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 378b09a..0000000[m
+[1m--- a/SmartGallery.Data/Repositories/Tags/ITagRepository.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-﻿namespace SmartGallery.Data.Repositories.Tags[m
+[31m-{[m
+[31m-    public interface ITagRepository[m
+[31m-    {[m
+[31m-        [m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/SmartGallery.Data/SmartGallery.Data.csproj b/SmartGallery.Data/SmartGallery.Data.csproj[m
+[1mdeleted file mode 100644[m
+[1mindex c16c6d5..0000000[m
+[1m--- a/SmartGallery.Data/SmartGallery.Data.csproj[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-<Project Sdk="Microsoft.NET.Sdk">[m
+[31m-[m
+[31m-  <PropertyGroup>[m
+[31m-    <TargetFramework>netcoreapp2.2</TargetFramework>[m
+[31m-  </PropertyGroup>[m
+[31m-[m
+[31m-</Project>[m
+[1mdiff --git a/SmartGallery.Domain/Images/ImageCategory.cs b/SmartGallery.Domain/Images/ImageCategory.cs[m
+[1mdeleted file mode 100644[m
+[1mindex e2abe6c..0000000[m
+[1m--- a/SmartGallery.Domain/Images/ImageCategory.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,9 +0,0 @@[m
+[31m-﻿namespace SmartGallery.Domain.Images[m
+[31m-{[m
+[31m-    public class ImageCategory[m
+[31m-    {[m
+[31m-        public int Id { get; set; }[m
+[31m-        public string Name { get; set; }[m
+[31m-        public string CategoryName { get; set; }[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/SmartGallery.Domain/Images/ImageData.cs b/SmartGallery.Domain/Images/ImageData.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 4d48136..0000000[m
+[1m--- a/SmartGallery.Domain/Images/ImageData.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,26 +0,0 @@[m
+[31m-﻿using System.Collections.Generic;[m
+[31m-using System.Linq;[m
+[31m-[m
+[31m-namespace SmartGallery.Domain.Images[m
+[31m-{[m
+[31m-    public class ImageData[m
+[31m-    {[m
+[31m-        private readonly List<Tag> _tags = new List<Tag>();[m
+[31m-[m
+[31m-        public int Id { get; set; }[m
+[31m-        public byte[] ImageBytes { get; set; }[m
+[31m-        public string FileName { get; set; }[m
+[31m-        public string Description { get; set; }[m
+[31m-        public ImageCategory Category { get; set; }[m
+[31m-[m
+[31m-        public IReadOnlyCollection<Tag> Tags => _tags.AsReadOnly();[m
+[31m-[m
+[31m-        public void AddTag(string name)[m
+[31m-        {[m
+[31m-            _tags.Add(new Tag[m
+[31m-            {[m
+[31m-                Name = name[m
+[31m-            });[m
+[31m-        }[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/SmartGallery.Domain/Images/Tag.cs b/SmartGallery.Domain/Images/Tag.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 8e48f8b..0000000[m
+[1m--- a/SmartGallery.Domain/Images/Tag.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,8 +0,0 @@[m
+[31m-﻿namespace SmartGallery.Domain.Images[m
+[31m-{[m
+[31m-    public class Tag[m
+[31m-    {[m
+[31m-        public int Id { get; set; }[m
+[31m-        public string Name { get; set; }[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/SmartGallery.Domain/SmartGallery.Domain.csproj b/SmartGallery.Domain/SmartGallery.Domain.csproj[m
+[1mdeleted file mode 100644[m
+[1mindex 2bd48b2..0000000[m
+[1m--- a/SmartGallery.Domain/SmartGallery.Domain.csproj[m
+[1m+++ /dev/null[m
+[36m@@ -1,7 +0,0 @@[m
+[31m-﻿<Project Sdk="Microsoft.NET.Sdk">[m
+[31m-[m
+[31m-  <PropertyGroup>[m
+[31m-    <TargetFramework>netcoreapp2.2</TargetFramework>[m
+[31m-  </PropertyGroup>[m
+[31m-[m
+[31m-</Project>[m
+[1mdiff --git a/SmartGallery.Services/Categories/ICategoryService.cs b/SmartGallery.Services/Categories/ICategoryService.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 33efc65..0000000[m
+[1m--- a/SmartGallery.Services/Categories/ICategoryService.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,13 +0,0 @@[m
+[31m-﻿using System.Collections.Generic;[m
+[31m-using System.Threading.Tasks;[m
+[31m-using SmartGallery.Domain.Images;[m
+[31m-[m
+[31m-namespace SmartGallery.Services.Categories[m
+[31m-{[m
+[31m-    public interface ICategoryService[m
+[31m-    {[m
+[31m-        Task<IList<ImageCategory>> GetAllCategories();[m
+[31m-[m
+[31m-        Task SaveCategory(string name, string description);[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/SmartGallery.Services/Images/IImageService.cs b/SmartGallery.Services/Images/IImageService.cs[m
+[1mdeleted file mode 100644[m
+[1mindex de63fd8..0000000[m
+[1m--- a/SmartGallery.Services/Images/IImageService.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,17 +0,0 @@[m
+[31m-﻿using System.Collections.Generic;[m
+[31m-using System.Threading.Tasks;[m
+[31m-using SmartGallery.Domain.Images;[m
+[31m-[m
+[31m-namespace SmartGallery.Services.Images[m
+[31m-{[m
+[31m-    public interface IImageService[m
+[31m-    {[m
+[31m-        // Get[m
+[31m-        Task<IList<ImageData>> GetAllImages(int page, int pageSize);[m
+[31m-        Task<IList<ImageData>> GetImagesByCategory(string categoryName, int page, int pageSize);[m
+[31m-        Task<ImageData> GetImageData(int imageDataId);[m
+[31m-[m
+[31m-        // Save[m
+[31m-        Task SaveImage(string fileName, byte[] imageBytes, string categoryName = null, string description = null);[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/SmartGallery.Services/SmartGallery.Services.csproj b/SmartGallery.Services/SmartGallery.Services.csproj[m
+[1mdeleted file mode 100644[m
+[1mindex f264f5c..0000000[m
+[1m--- a/SmartGallery.Services/SmartGallery.Services.csproj[m
+[1m+++ /dev/null[m
+[36m@@ -1,11 +0,0 @@[m
+[31m-<Project Sdk="Microsoft.NET.Sdk">[m
+[31m-[m
+[31m-  <PropertyGroup>[m
+[31m-    <TargetFramework>netcoreapp2.2</TargetFramework>[m
+[31m-  </PropertyGroup>[m
+[31m-[m
+[31m-  <ItemGroup>[m
+[31m-    <ProjectReference Include="..\SmartGallery.Domain\SmartGallery.Domain.csproj" />[m
+[31m-  </ItemGroup>[m
+[31m-[m
+[31m-</Project>[m
+[1mdiff --git a/SmartGallery.Services/Tags/ITagService.cs b/SmartGallery.Services/Tags/ITagService.cs[m
+[1mdeleted file mode 100644[m
+[1mindex 9ba6287..0000000[m
+[1m--- a/SmartGallery.Services/Tags/ITagService.cs[m
+[1m+++ /dev/null[m
+[36m@@ -1,11 +0,0 @@[m
+[31m-﻿using System.Collections.Generic;[m
+[31m-using System.Threading.Tasks;[m
+[31m-using SmartGallery.Domain.Images;[m
+[31m-[m
+[31m-namespace SmartGallery.Services.Tags[m
+[31m-{[m
+[31m-    public interface ITagService[m
+[31m-    {[m
+[31m-        Task<IList<Tag>> GetAllTags();[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/SmartGallery.sln b/src/SmartGallery.sln[m
+[1mindex f7af504..4797141 100644[m
+[1m--- a/src/SmartGallery.sln[m
+[1m+++ b/src/SmartGallery.sln[m
+[36m@@ -5,11 +5,11 @@[m [mVisualStudioVersion = 16.0.28803.352[m
+ MinimumVisualStudioVersion = 10.0.40219.1[m
+ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartGallery.Web", "SmartGallery.Web\SmartGallery.Web.csproj", "{5E03D73E-622A-44DF-949D-37AF2EFC3F5A}"[m
+ EndProject[m
+[31m-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Services", "..\SmartGallery.Services\SmartGallery.Services.csproj", "{FAAD5ADB-FB16-4078-BE6E-10CBE632981F}"[m
+[32m+[m[32mProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Services", "SmartGallery.Services\SmartGallery.Services.csproj", "{FAAD5ADB-FB16-4078-BE6E-10CBE632981F}"[m
+ EndProject[m
+[31m-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Domain", "..\SmartGallery.Domain\SmartGallery.Domain.csproj", "{EB85E76F-0AFC-4A0E-89BB-F4B3860C84D9}"[m
+[32m+[m[32mProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Domain", "SmartGallery.Domain\SmartGallery.Domain.csproj", "{EB85E76F-0AFC-4A0E-89BB-F4B3860C84D9}"[m
+ EndProject[m
+[31m-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Data", "..\SmartGallery.Data\SmartGallery.Data.csproj", "{5F619232-3621-489C-A100-E4FE45FF121D}"[m
+[32m+[m[32mProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Data", "SmartGallery.Data\SmartGallery.Data.csproj", "{5F619232-3621-489C-A100-E4FE45FF121D}"[m
+ EndProject[m
+ Global[m
+ 	GlobalSection(SolutionConfigurationPlatforms) = preSolution[m

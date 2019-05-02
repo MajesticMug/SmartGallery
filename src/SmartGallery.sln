@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartGallery.Web", "SmartGallery.Web\SmartGallery.Web.csproj", "{5E03D73E-622A-44DF-949D-37AF2EFC3F5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Services", "..\SmartGallery.Services\SmartGallery.Services.csproj", "{FAAD5ADB-FB16-4078-BE6E-10CBE632981F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Services", "SmartGallery.Services\SmartGallery.Services.csproj", "{FAAD5ADB-FB16-4078-BE6E-10CBE632981F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Domain", "..\SmartGallery.Domain\SmartGallery.Domain.csproj", "{EB85E76F-0AFC-4A0E-89BB-F4B3860C84D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Domain", "SmartGallery.Domain\SmartGallery.Domain.csproj", "{EB85E76F-0AFC-4A0E-89BB-F4B3860C84D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Data", "..\SmartGallery.Data\SmartGallery.Data.csproj", "{5F619232-3621-489C-A100-E4FE45FF121D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGallery.Data", "SmartGallery.Data\SmartGallery.Data.csproj", "{5F619232-3621-489C-A100-E4FE45FF121D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
