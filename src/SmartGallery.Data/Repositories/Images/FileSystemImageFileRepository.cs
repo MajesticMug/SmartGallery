@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using SmartGallery.Domain.Images;
 
@@ -7,18 +6,20 @@ namespace SmartGallery.Data.Repositories.Images
 {
     public class FileSystemImageFileRepository : IImageFileRepository
     {
+        private readonly string _targetPath = "C:\\SmartGallery\\Images\\";
+
         public async Task SaveImageBytesAsync(ImageData imageData, byte[] imageBytes)
         {
-            string currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string targetDirectory = Path.Combine(this._targetPath, imageData.Category.Name);
 
-            string targetPath = Path.Combine(currentPath, imageData.FilePath);
-
-            if (!Directory.Exists(targetPath))
+            if (!Directory.Exists(targetDirectory))
             {
-                Directory.CreateDirectory(targetPath);
+                Directory.CreateDirectory(targetDirectory);
             }
 
-            using (var stream = new FileStream(targetPath, FileMode.Create))
+            string filePath = Path.Combine(targetDirectory, imageData.FileNameToSave);
+
+            using (FileStream stream = new FileStream(filePath, FileMode.Create))
             {
                 await stream.WriteAsync(imageBytes, 0, imageBytes.Length);
             }
@@ -28,7 +29,7 @@ namespace SmartGallery.Data.Repositories.Images
         {
             foreach (ImageData imageData in imageDataList)
             {
-                using (FileStream fileStream = new FileStream(imageData.FilePath, FileMode.Create))
+                using (FileStream fileStream = new FileStream(imageData.FileNameToSave, FileMode.Create))
                 {
                     await fileStream.ReadAsync(imageData.ImageBytes);
                 }

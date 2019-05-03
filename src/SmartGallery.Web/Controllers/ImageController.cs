@@ -20,9 +20,9 @@ namespace SmartGallery.Web.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Upload(string category, string description)
         {
-            var file = Request.Form.Files[0];
+            var file = this.Request.Form.Files[0];
             byte[] fileBytes = null;
-
+            
             using (var ms = new MemoryStream())
             {
                 file.CopyTo(ms);
@@ -30,7 +30,7 @@ namespace SmartGallery.Web.Controllers
                 // act on the Base64 data
             }
 
-            return new OkObjectResult(await _imageService.SaveImageAsync(file.Name, fileBytes, category, description));
+            return new OkObjectResult(await this._imageService.SaveImageAsync(file.FileName, fileBytes, category, description));
         }
     }
 }

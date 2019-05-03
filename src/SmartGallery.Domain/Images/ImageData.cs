@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SmartGallery.Domain.Images
 {
@@ -10,7 +11,7 @@ namespace SmartGallery.Domain.Images
 
         public string FileName { get; set; }
 
-        public string FilePath => this.Category != null ? $"{this.Category.Name}\\{this.FileName}" : this.FileName;
+        public string FileNameToSave => $"{this.ImageDataId}.{this.FileName.Split('.').Last()}";
 
         public byte[] ImageBytes { get; set; }
 
