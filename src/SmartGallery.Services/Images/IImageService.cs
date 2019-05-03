@@ -12,6 +12,6 @@ namespace SmartGallery.Services.Images
         Task<ImageData> GetImageDataAsync(int imageDataId);
 
         // Save
-        Task SaveImageAsync(string fileName, byte[] imageBytes, string categoryName = null, string description = null);
+        Task<ImageData> SaveImageAsync(string fileName, byte[] imageBytes, string categoryName = null, string description = null);
     }
 }

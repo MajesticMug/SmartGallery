@@ -2,6 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using SmartGallery.Data;
 using SmartGallery.Data.Repositories.Categories;
+using SmartGallery.Data.Repositories.Images;
+using SmartGallery.Data.Repositories.Tags;
+using SmartGallery.Services.Categories;
+using SmartGallery.Services.Images;
 
 namespace SmartGallery.Web
 {
@@ -9,11 +13,19 @@ namespace SmartGallery.Web
     {
         public static void BootstrapServices(IServiceCollection services)
         {
-            services.AddScoped<DbContext, SmartGalleryDbContext>();
+            services.AddDbContext<SmartGalleryDbContext>(builder =>
+                {
+                    builder.UseInMemoryDatabase("InMemorySmartGallery");
+                });
 
+            services.AddScoped<IImageDataRepository, EfImageDataRepository>();
+            services.AddScoped<IImageFileRepository, FileSystemImageFileRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
 
-            // todo:
+            services.AddScoped<IImageService, ImageService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
     }
 }

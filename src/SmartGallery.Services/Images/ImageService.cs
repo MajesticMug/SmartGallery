@@ -44,7 +44,8 @@ namespace SmartGallery.Services.Images
             return imageData;
         }
 
-        public async Task SaveImageAsync(string fileName, byte[] imageBytes, string categoryName = null, string description = null)
+        public async Task<ImageData> SaveImageAsync(string fileName, byte[] imageBytes, string categoryName = null,
+            string description = null)
         {
             ImageData imageData = new ImageData
             {
@@ -62,6 +63,10 @@ namespace SmartGallery.Services.Images
             }
 
             await this._imageDataRepository.SaveImageDataAsync(imageData);
+
+            await this._imageFileRepository.SaveImageBytesAsync(imageData, imageBytes);
+
+            return imageData;
         }
     }
 }

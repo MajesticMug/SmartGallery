@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using SmartGallery.Domain.Images;
 
@@ -8,9 +9,18 @@ namespace SmartGallery.Data.Repositories.Images
     {
         public async Task SaveImageBytesAsync(ImageData imageData, byte[] imageBytes)
         {
-            using (FileStream fileStream = new FileStream(imageData.FilePath, FileMode.Create))
+            string currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            string targetPath = Path.Combine(currentPath, imageData.FilePath);
+
+            if (!Directory.Exists(targetPath))
             {
-                await fileStream.WriteAsync(imageBytes);
+                Directory.CreateDirectory(targetPath);
+            }
+
+            using (var stream = new FileStream(targetPath, FileMode.Create))
+            {
+                await stream.WriteAsync(imageBytes, 0, imageBytes.Length);
             }
         }
 
