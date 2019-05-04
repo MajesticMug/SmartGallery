@@ -13,7 +13,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { UploadComponent } from "./upload/upload.component";
 import { GalleryComponent } from "./gallery/gallery.component";
 import { ImageFilterPipe } from "./core/pipes/image-filter.pipe";
-import { ImageService } from "./image.service"
+import { ImageService } from "./core/services/image.service"
 
 @NgModule({
   declarations: [

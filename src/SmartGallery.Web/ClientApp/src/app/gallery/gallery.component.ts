@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { ImageService } from "../image.service"
+import { ImageService } from "../core/services/image.service"
 
 @Component({
   selector: 'app-gallery',
