@@ -15,6 +15,14 @@ namespace SmartGallery.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ImageData>()
+                .HasOne<ImageCategory>()
+                .WithMany(category => category.Images);
+
+            modelBuilder.Entity<ImageCategory>()
+                .HasIndex(category => category.Name)
+                .IsUnique();
+
             base.OnModelCreating(modelBuilder);
         }
     }

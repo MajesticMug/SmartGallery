@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SmartGallery.Data.Repositories.Categories;
 using SmartGallery.Data.Repositories.Images;
 using SmartGallery.Domain.Images;
 
@@ -10,11 +11,13 @@ namespace SmartGallery.Services.Images
     {
         private readonly IImageDataRepository _imageDataRepository;
         private readonly IImageFileRepository _imageFileRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public ImageService(IImageDataRepository imageDataRepository, IImageFileRepository imageFileRepository)
+        public ImageService(IImageDataRepository imageDataRepository, IImageFileRepository imageFileRepository, ICategoryRepository categoryRepository)
         {
             this._imageDataRepository = imageDataRepository;
             this._imageFileRepository = imageFileRepository;
+            this._categoryRepository = categoryRepository;
         }
 
         public async Task<IList<ImageData>> GetAllImagesAsync(int pageNumber, int pageSize)
@@ -44,22 +47,31 @@ namespace SmartGallery.Services.Images
             return imageData;
         }
 
-        public async Task<ImageData> SaveImageAsync(string fileName, byte[] imageBytes, string categoryName = null,
+        public async Task<ImageData> SaveImageAsync(string fileName, byte[] imageBytes, string fileContentType, string categoryName = null,
             string description = null)
         {
             ImageData imageData = new ImageData
             {
                 FileName = fileName,
                 ImageBytes = imageBytes,
+                Description = description,
+                ContentType = fileContentType
+            };
+
+            if (categoryName == null)
+            {
+                categoryName = "Other";
+            }
+
+            imageData.Category = new ImageCategory
+            {
+                Name = categoryName,
                 Description = description
             };
 
-            if (categoryName != null)
+            if (!await _categoryRepository.Exists(categoryName))
             {
-                imageData.Category = new ImageCategory
-                {
-                    Name = categoryName
-                };
+                await _categoryRepository.SaveCategory(imageData.Category);
             }
 
             await this._imageDataRepository.SaveImageDataAsync(imageData);

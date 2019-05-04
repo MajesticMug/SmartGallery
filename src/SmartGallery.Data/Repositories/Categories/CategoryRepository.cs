@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SmartGallery.Domain.Images;
@@ -21,6 +22,11 @@ namespace SmartGallery.Data.Repositories.Categories
             await this.DbContext.Categories.AddAsync(category);
 
             await this.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> Exists(string categoryName)
+        {
+            return await this.DbContext.Categories.AnyAsync(category => category.Name == categoryName);
         }
     }
 }

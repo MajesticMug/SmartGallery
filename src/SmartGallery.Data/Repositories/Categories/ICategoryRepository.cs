@@ -9,5 +9,6 @@ namespace SmartGallery.Data.Repositories.Categories
         Task<IList<ImageCategory>> GetAllCategoriesAsync();
 
         Task SaveCategory(ImageCategory category);
+        Task<bool> Exists(string categoryName);
     }
 }

@@ -15,18 +15,21 @@ namespace SmartGallery.Data.Repositories.Images
 
         public async Task<IList<ImageData>> GetAllImagesAsync(int pageNumber, int pageSize)
         {
-            return await this.DbContext.Images.GetPage(pageNumber, pageSize).ToListAsync();
+            return await this.DbContext.Images
+                .Include(img => img.Category).GetPage(pageNumber, pageSize).ToListAsync();
         }
 
         public async Task<IList<ImageData>> GetImagesByCategoryAsync(string categoryName, int pageNumber, int pageSize)
         {
             return await this.DbContext.Images.Where(img => img.Category != null && img.Category.Name == categoryName)
+                .Include(img => img.Category)
                 .GetPage(pageNumber, pageSize).ToListAsync();
         }
 
         public async Task<ImageData> GetImageDataAsync(int imageDataId)
         {
-            return await this.DbContext.Images.Where(img => img.ImageDataId == imageDataId).FirstOrDefaultAsync();
+            return await this.DbContext.Images.Where(img => img.ImageDataId == imageDataId)
+                .Include(img => img.Category).FirstOrDefaultAsync();
         }
 
         public async Task SaveImageDataAsync(ImageData imageData)

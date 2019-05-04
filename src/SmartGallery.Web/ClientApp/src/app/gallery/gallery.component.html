@@ -1,0 +1,17 @@
+<div class="row">
+  <h2>Photos</h2>
+  <button class="btn btn-lg btn-info" [class.active]="selectedCategory===''" (click)="selectedCategory=''">All</button>
+
+  <button class="btn btn-lg btn-info" *ngFor="let category of categories"
+          [ngClass]="{'active': selectedCategory===category.name}" (click)="selectedCategory=category.name">
+    {{category.name}}
+  </button>
+
+  <ul id="thumbnailsList">
+    <li *ngFor="let image of (visibleImages | imageFilter:selectedCategory)" >
+      <a [routerLink] ="['/image', image.id]">
+        <img src="api/Image/GetImage?ImageDataId={{image.imageDataId}}" class="tn" width="200" height="160">
+      </a>
+    </li>
+  </ul>
+</div>

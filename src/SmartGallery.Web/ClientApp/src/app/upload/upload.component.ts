@@ -10,7 +10,6 @@ import Core = require("@angular/core");
 })
 export class UploadComponent implements OnInit {
 
-  imageData: IImageData = null;
   selectedFile: File = null;
   http: HttpClient;
   baseUrl: string;
@@ -19,18 +18,6 @@ export class UploadComponent implements OnInit {
 
     this.http = http;
     this.baseUrl = baseUrl;
-    //http.post<IImageData>(baseUrl + 'api/SampleData/WeatherForecasts',
-    //{
-    //  params: {
-    //    fileName: '',
-    //    category: '',
-    //    imageBytes: '',
-    //    description: ''
-    //  }
-    //  }).subscribe(result => {
-    //    this.imageData = result;
-    //  },
-    //  error => console.error(error));
   }
 
   onFileSelected(event) {
@@ -43,7 +30,7 @@ export class UploadComponent implements OnInit {
 
     formData.append('image', this.selectedFile, this.selectedFile.name);
 
-    this.http.post<IImageData>(this.baseUrl + 'api/Image/Upload', formData, {
+    this.http.post(this.baseUrl + 'api/Image/Upload', formData, {
       params: {
         category: 'testCategory',
         description: 'testDescription'
@@ -55,8 +42,4 @@ export class UploadComponent implements OnInit {
   ngOnInit() {
   }
 
-}
-
-interface IImageData {
-  
 }

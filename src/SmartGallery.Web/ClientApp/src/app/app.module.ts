@@ -11,6 +11,9 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { UploadComponent } from "./upload/upload.component";
+import { GalleryComponent } from "./gallery/gallery.component";
+import { ImageFilterPipe } from "./core/pipes/image-filter.pipe";
+import { ImageService } from "./image.service"
 
 @NgModule({
   declarations: [
@@ -19,19 +22,20 @@ import { UploadComponent } from "./upload/upload.component";
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    UploadComponent
+    UploadComponent,
+    GalleryComponent,
+    ImageFilterPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: UploadComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: GalleryComponent, pathMatch: 'full' },
+      { path: 'upload', component: UploadComponent }
     ])
   ],
-  providers: [],
+  providers: [ImageService, ImageFilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
